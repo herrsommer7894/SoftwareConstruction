@@ -1,0 +1,60 @@
+1.  file is not executable, file is not in directory
+	Make it executable:
+	$sh hello                #execute script
+	$chmod +x hello          #make file executable
+	$./hello                 #execute script
+
+2.
+
+3.
+	a) 
+	b) egrep ^(cs|se|bi|en)[0-9]{4} | sort
+	c) egrp "/bin/bash" | cat -d':' -f1
+	d) 
+
+4. 
+	#!/bin/sh
+	while read line
+	do
+    	echo "$line"
+	done
+	a) Diff between this and cat: above does not concatenate multiple files
+	b) 
+		#!/bash/sh
+		for f in $@
+		do
+			if [[ ! -r $f]]
+			then
+				echo "Does Not Exist"
+			else
+				while read line
+					echo "$line"
+				done < $f
+			fi
+		done 
+
+7.
+
+	#!/bin/sh
+	while read id mark
+	do
+		#mark/grade chcking
+		if  [[ $mark =~ ^[0-9]+$ ]]
+		then
+			echo "$id ?? ($mark)"
+		elif [[ $mark -lt 50 ]]
+		then
+			echo "$id FL"
+		elif [[ $mark -lt 65 ]]
+		then
+			echo "$id PS"
+		elif [[ $mark -lt 75 ]]
+		then
+			echo "$id CR"
+		elif [[ $mark -lt 85  ]]
+		then
+			echo "$id D"
+		else 
+			echo "$id HD"
+		fi
+	done < input

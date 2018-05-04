@@ -1,0 +1,107 @@
+1. 
+	#!/usr/bin/perl -w
+	print "username: ";
+	$username = <STDIN>;
+	chomp $username
+
+	print "password: ";
+	$password = <STDIN>;
+	chomp $password;
+
+	#normally sanitise here
+
+	$pwfile = "users/$username.password";
+	if(!open F, "<", "$pwfile"){
+		print "unknown username";
+	} else{
+		$correct_pw=<F>;
+		chomp $correct_pw;
+		if($password eq $correct_pw){
+			print "You are authenticated.\n";
+		} else {
+			print "Incorrect password!\n";
+		}
+	}
+
+3.
+	#!/bin/sh
+	cat << eof
+	Content-type: text
+
+	<!DOCTYPE HTML>
+		<html lang="en">
+			<head></head>
+			<body>
+			<h2>Execution Environment</h2>
+	eof
+
+	echo "pwd: `pwd`"
+	echo "id: `id`"
+	echo "hostname: `hostname`"
+	echo "uname -a: `uname -a`"
+
+	cat << eof
+			</body>
+	</html>
+	eof
+
+5. #!/bin/sh
+	if test $REQUESST_METHOD = post
+		then
+			parameters="`cat`"
+	else
+			parameters="$QUERY_STRING"
+	fi
+	cat << eof
+	Content-type: text/html
+	<!DOCTYPE html>
+		<html lang='en'>
+		<head></head>
+			<body>
+				<h2>GET Request - Input Parameters</h2>
+				<pre>
+					$parameter
+				</pre>
+			</body>
+	</html>
+
+	eof
+
+
+6. #!/bin/sh
+	if test $REQUEST_METHOD = "GET"
+		then
+			parameters="$QUERY_STRING"
+	else
+			read parameters
+	fi
+
+	x=`echo $parameters|sed '
+			s/x=//
+			s/&.*//
+			s/[^0-9\-\.\+]//g'`
+	y=`echo $parameters|sed '
+			s/y=//
+			s/&.*//
+			s/[^0-9\-\.\+]//g'`
+	cat << eof
+	Content-type: text/html
+	<!DOCTYPE html>
+		<html lang='en'>
+		<head></head>
+			<body>
+	eof
+
+	sum="?"
+	test "$x" -a "$y" && sum="expr ......,,..."
+
+	cat<< eof
+	<form method = "GET" action="">
+	<inputtype=textfield name=x value=$x>+<inputtype=textfield name=y value=$y> = $sum
+	<input type="submit" value="calculate">
+	</form>				<h2>GET Request - Input Parameters</h2>
+			</body>
+	</html>
+
+	eof
+

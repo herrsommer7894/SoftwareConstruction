@@ -1,0 +1,46 @@
+Yaminn Aung (z5061216) Assignment 1 Diary
+
+Date		Start	End	Notes
+11/09/16	10:00	12:00	restructured the starter code given by Andrew Taylor to have a true/false if line has been altered/translated
+				decided to push altered code to an array
+				draft of subset 1 completed
+
+13/09/16	14:30	19:41	found bugs in subset 1
+				updated code to consider prints that print a mix between variable and string, can successfully print all cases
+				noted there are 3 cases for variables in perl: string/char, number and array/hash.
+				completed subset 1
+				plpy.pl passes autotests 0 and 1
+
+20/09/16	14:00	17:22	Worked on subset 2 progress is as follows;
+				completed logical, comparison, bitwise operators.
+				completed if and while statements
+				completed indentation
+				completed for loops with syntax - for i (0 .. n){ statement }
+				completed for loops with syntax - for ($i = a; $i(<|<=); $i++) { statement }
+				completed next, last
+				plpy.pl passes autotests 2
+
+24/09/16	15:00	19:00	Fixed bugs from print and find_var
+				moved things inside if statements to subroutines and restructured code
+				planned for subset 3
+				code now handles simple use of <STDIN>, complex prints, chomp
+
+25/09/16	15:00	17:41	Code passes subset 3; can now handle simple use of stdin, complex prints, chomp, join, ARGV, .., ++/--
+				Also can handle <>
+
+27/09/16	19:00	21:00	Can now change .= 
+				fixed bugs from earlier subsets - mainly print bugs and for bugs
+				Can handle very simple variable interpolation
+
+29/09/16 	18:40	22:00	Can now handle most issues dealing with arrays - reverse, $#array, printing arrays, scalar(@array)
+				Debugging variable storage and updated to store type of variable
+
+30/09/16	12:00	1:00	Can push, pop, reverse, shift and unshift simple things
+
+01/10/16	15:00	17:00	Can now deal with regexes (s/// and //)
+				Can handle prints with % - BASIC ONLY
+
+02/10/16	19:00	20:00	Began debugging after it did not succeed many of the examples given
+
+03/10/16	16:00	19:00	Can not cope with the -1hr from daylight savings, lost -1hr time to work on the assignment
+				Continued to debug and find some corner cases for code

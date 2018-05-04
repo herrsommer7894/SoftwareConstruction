@@ -1,0 +1,27 @@
+COMP2041 Week02
+
+Q4.
+	a) ^#
+	b) egrep ^#
+	c) egrep -v ^#
+	d) egrep '^[BHLP]arry'
+	e) egrep 'hello.world'
+	f) egrep [ae]'clndr'
+	g) egrep '[0-9],'
+	h) grep '^[[:space:]]*$[^""]'' file
+
+Q8. 
+
+Q9. egrep -v . 
+	give lines that don't contain any character -> 0.
+	OR could do egrep "^$"
+
+11.
+	a) regex ":[^:]+:"
+	b) regex "^[0-9]+\.[0-9]?"
+	c) regex "\|[^\|]+\|"
+
+12. b)
+		ii) grep " 9[0-9] "
+		iii) 
+	

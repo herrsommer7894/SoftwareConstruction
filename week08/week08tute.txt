@@ -1,0 +1,108 @@
+1. 
+	#!/usr/bin/perl -w
+	use strict;
+	my %hash_tags = ();
+	my $url = $ARGV[0];
+	my $page = `wget -q -O- $url`;
+	$page =~ tr/A-Z/a-z/;
+	$page =~ s/<!--.*-->//g;
+	
+	my @tags = $page =~ /<\s*(\w+)/g;
+
+	foreach my $tag (@tags){
+		if(exists $hash_tags{$tag}){
+			$hash{$tag} += 1;
+		} else {
+			$hash{$tag} = 1;
+		}
+	}
+
+	foreach my $key (sort keys  %hash_tags){
+		print "$key $tags{$key}\n";
+	}
+
+2. 
+	#!/usr/bin/perl -w
+	my $flag;
+	if ($ARGV[0] == "-f") {
+		$flag = 1;
+		shift @ARGV;
+	}
+	use strict;
+	my %hash_tags = ();
+	my $url = $ARGV[0];
+	my $page = `wget -q -O- $url`;
+	$page =~ tr/A-Z/a-z/;
+	$page =~ s/<!--.*-->//g;
+	
+	my @tags = $page =~ /<\s*(\w+)/g;
+
+	foreach my $tag (@tags){
+		if(exists $hash_tags{$tag}){
+			$hash{$tag} += 1;
+		} else {
+			$hash{$tag} = 1;
+		}
+	}
+
+
+	my @keys;
+
+	if ($flag eq 1){
+		@keys = sort {$hash_tags{$a} <=> $hash_tags{$b} keys %hash_tags};
+
+	} else {
+		@keys = sort keys %hash_tags;
+	}
+
+		foreach my $key (@keys){
+		print "$key\n";
+	}
+
+3.
+	#!/usr/bin/perl -w
+
+	sub nlines {
+		$n = shift;
+		$string = "";
+		foreach $line (1..$n){
+			$string .= <STDIN>;
+		}
+		return $string
+	}
+
+	print nlines($ARGV[0]);
+
+4.
+	#!/usr/bin/perl -w
+	while($line = <>){
+		chomp $line;
+		if($line =~ /^(\s+)/){
+			print $1;
+			$line =~ s/^\s+//;
+		}
+		$line =~ s/\s+//;
+		if($line =~ /^#!/){
+			print "#!/usr/bin/perl -w\n";
+		} else if ($line =~ /while/){
+			#(my $x, my $y) = split / /, $line, 2;
+			$line =~ s/while //;
+			print "while (!system "$line") {\n";
+		} else if($line =~ /^do$/){
+			next;
+		} else if($line =~ /done/){
+			print "}\n";
+		} elsif ($line =~ /echo/){
+			$line =~ s/echo//;
+			$line =~ s/\"//g;
+			print "print \"$line\\n\"\n";
+		} elsif ($line =~ /sleep/){
+			print "system(\"$line\");\n";
+		} elsif ($line =~ // || $line =~ /#/){
+			print $line;
+		} else {
+			print "#$line\n";
+		}
+	}
+
+	NOTE: ASSUME PEOPLE CANT INDENT FOR SHIT

@@ -1,0 +1,81 @@
+2. 
+	#!/bin/bash
+	#update_course_code.sh
+
+	for file in "$@"
+	do
+			sed 's/COMP2041/COMP2042'
+			sed 's/COMP9041/COMP9042'
+	done
+
+
+3. 
+	#!/bin/bash
+	#update_course_code.sh
+	for folder in "$@"
+		do
+		cd "$folder"
+		for file in *
+		do
+			sed 's/COMP2041/COMP2042'
+			sed 's/COMP9041/COMP9042'
+		done
+		cd ..
+	done
+
+4. 
+	#!/bin/bash
+	#is_business_hours.sh
+	currTime=`date | cut -d' ' -f5 | cut -c 1-2`
+	if test $currTime -ge 9 -a -lt 17
+		then
+			exit 0
+		else 
+			exit 1
+	fi
+
+5. 
+	#!/bin/bash
+	malias COMP2041-list | egrep [^:] | sed 's/^ *//'
+
+8.
+	file name is not taken care of properly
+	Original:
+	for image_file in `ls ~/friends`
+	do
+			ln -s "~/friends/$image_file"
+	done
+
+	Fixed: #LOL IDK
+	for image_file in ~/friends/*
+	do
+			ln -s "~/friends/$image_file"
+	done
+
+10.
+	#!/bin/bash
+	#isprime.sh checks if int is prime
+	if [[ `expr %x % %y` ]]
+		i=2
+		n=$1
+	fi
+	while [[ $i -lt $n ]]
+	do
+		if test `expr $n % %il -eq 0`
+		then
+			echo "$n is not prime"
+			exit 1
+
+
+	some other stuff
+
+11. 
+	#!/bin/bash
+	for file in "$@"
+	do
+		egrep "^#include" |
+		cut -d' ' -f2 |
+		sed 's/[<>""]//g' | 
+		sort | 
+		uniq
+	done

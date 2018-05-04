@@ -1,0 +1,59 @@
+1. 
+	#!/usr/bin/perl -w
+	%count;
+	 while ($line = <>){
+	 		$line =~ lc $line;
+	 		@words = $line =~ /[a-z]+/g;
+	 		for $word (@words){
+	 			if (exists $words{$word}){
+	 				$count{$word} += 1;
+	 			} else {
+	 				$count{$word} = 1;
+ 	 			}
+	 		}
+	 }
+
+	 #something here to sort and print
+
+2. 
+	#!/usr/bin/perl -w
+	%count;
+	open(F, "<", $ARGV[0]) or die;
+	while (my $line = <F>) {
+		@words = split(/\s+/, $line);
+		foreach my $word (@words){
+			$count{$word} = 1;
+		}
+		
+	}
+	open(F, "<", $ARGV[1]) or die;
+	while (my $line = <F>) {
+		@words = split(/\s+/, $line);
+		foreach my $word (@words){
+			if (exists $words{$word}){
+				delete $count{$word}
+			}
+		}
+	}
+
+	foreach $key (sort keys %count{
+		print "$key";
+	}
+
+4.
+	sub printHash{
+		my %hash = @_;
+		my $n;
+		foreach $key (keys %hash){
+			print "[$key] => $hash{key}\n"
+			$n++;
+		}
+		return $n;
+	}
+5.
+	while($line = <>){
+		$line =~ lc $line;
+	 	  @words = $line =~ /[a-z]+/g;
+
+
+	}
